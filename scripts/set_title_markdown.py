@@ -5,7 +5,7 @@ from pathlib import Path
 
 NB = Path(__file__).resolve().parents[1] / "notebooks" / "main.ipynb"
 
-TITLE = "Project Template: End-to-End AI/ML Pipeline"
+TITLE = "Earnings Sentiment Project"
 SUBTITLE = (
     "A reusable notebook scaffold for DS projects — ingestion, preprocessing, EDA, modeling, training, evaluation"
 )

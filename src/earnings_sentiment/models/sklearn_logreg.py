@@ -6,7 +6,7 @@ from .registry import register
 
 
 class SKLogReg:
-    def __init__(self, max_iter: int = 200, random_state: int | None = None):
+    def __init__(self, max_iter: int = 200, random_state: int | None = None, **_: Any):
         from sklearn.linear_model import LogisticRegression
 
         self.model = LogisticRegression(max_iter=max_iter, random_state=random_state)
@@ -34,4 +34,3 @@ class SKLogReg:
 @register("logreg_sklearn")
 def _build_logreg_sklearn(**kwargs) -> Any:
     return SKLogReg(**kwargs)
-

@@ -1,6 +1,10 @@
 from __future__ import annotations
 from pathlib import Path
 import json
+import matplotlib
+
+# Use non-interactive backend for headless environments
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from .config import load_config
 

@@ -65,5 +65,5 @@ execute:
   message: false
 
 metadata:
-  title: "Project Template: End-to-End AI/ML Pipeline"
+  title: "Earnings Sentiment Project"
   subtitle: "A reusable notebook scaffold for DS projects — ingestion, preprocessing, EDA, modeling, training, evaluation"

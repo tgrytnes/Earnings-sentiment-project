@@ -1,4 +1,4 @@
-# MLOps Project Template
+# Earnings Sentiment Project
 
 This repository is a **reusable MLOps template** for AI and data science projects.  
 It provides a **config-driven, hardware-independent pipeline structure** with clear separation of source code, configs, data, and reports.  

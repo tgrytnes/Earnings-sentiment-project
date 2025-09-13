@@ -28,7 +28,7 @@ INSTALL_TEX=true
 TEX_FLAVOR="basic"     # basic | full | none
 INSTALL_QUARTO=true
 REGISTER_KERNEL=true
-KERNEL_NAME="yourproj-venv"
+KERNEL_NAME="earnings-sentiment-venv"
 
 usage() {
   cat <<EOF
@@ -44,7 +44,7 @@ Options:
   --tex {basic|full|none} TeX flavor (default: basic)
   --no-quarto             Do not install Quarto
   --no-kernel             Do not register Jupyter kernel
-  --kernel-name NAME      Jupyter kernel name (default: yourproj-venv)
+  --kernel-name NAME      Jupyter kernel name (default: earnings-sentiment-venv)
   -h, --help              Show this help
 EOF
 }
