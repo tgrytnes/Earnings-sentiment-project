@@ -1,0 +1,69 @@
+format:
+  html:
+    theme: cosmo
+    css: config/styles.css
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-copy: true
+    code-fold: true
+    code-tools: true
+    anchor-sections: true
+    smooth-scroll: true
+    highlight-style: github
+    fig-cap-location: bottom
+    tbl-cap-location: top
+    title-block-style: default
+    title-block-banner: true
+  pdf:
+    documentclass: scrartcl
+    toc: true
+    number-sections: true
+    pdf-engine: lualatex
+    latex-auto-install: false
+    mainfont: "Latin Modern Roman"
+    sansfont: "Latin Modern Sans"
+    monofont: "Latin Modern Mono"
+    geometry: margin=1in
+    include-in-header:
+      - text: |
+          % Colors and section/title styling using KOMA-Script interfaces
+          \usepackage{xcolor}
+          \definecolor{sectionblue}{HTML}{2563eb}
+
+          % KOMA: headings and title/subtitle colors
+          \setkomafont{title}{\color{sectionblue}\bfseries\Huge}
+          \setkomafont{subtitle}{\color{sectionblue}\large}
+          \setkomafont{section}{\color{sectionblue}\bfseries\Large}
+          \setkomafont{subsection}{\color{sectionblue}\bfseries\large}
+
+          % Code block styling via Shaded redefinition
+          \usepackage{tcolorbox}
+          \tcbuselibrary{skins,breakable}
+          \definecolor{codebg}{HTML}{F0F8FF}
+          \renewenvironment{Shaded}{%
+            \begin{tcolorbox}[%
+              enhanced,%
+              colback=codebg,%
+              colframe=codebg,%
+              borderline west={3pt}{0pt}{sectionblue},%
+              boxrule=0pt,%
+              arc=0pt,%
+              boxsep=5pt,%
+              left=2mm,%
+              right=2mm,%
+              top=2mm,%
+              bottom=2mm% 
+            ]% 
+          }{%
+            \end{tcolorbox}%
+          }
+
+execute:
+  echo: true
+  warning: false
+  message: false
+
+metadata:
+  title: "Project Template: End-to-End AI/ML Pipeline"
+  subtitle: "A reusable notebook scaffold for DS projects — ingestion, preprocessing, EDA, modeling, training, evaluation"

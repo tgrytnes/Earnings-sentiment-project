@@ -1,0 +1,23 @@
+seed: 42
+paths:
+  raw_prices: data/raw/prices.csv
+  raw_earnings: data/raw/earnings.csv
+  artifacts: artifacts
+task: tabular
+train:
+  target: y_d1
+  test_size: 0.25
+  features: ["surprise"]
+  # choose from: logreg_sklearn | mlp_torch | mlp_tf
+  model: "logreg_sklearn"
+  # model-specific args
+  model_args: {}
+trainer:
+  epochs: 10
+  batch_size: 256
+  lr: 0.001
+compute:
+  # backend: auto|torch|tensorflow|cpu
+  backend: auto
+  # mixed_precision: auto|true|false
+  mixed_precision: auto

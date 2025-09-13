@@ -1,0 +1,9 @@
+project:
+  type: default
+  output-dir: out
+
+# Delegate all configuration to files under notebooks/config
+metadata-files:
+  - config/_quarto.yml
+  - config/_quarto-latexauto.yml
+

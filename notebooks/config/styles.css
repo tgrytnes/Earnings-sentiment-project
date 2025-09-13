@@ -1,0 +1,240 @@
+/*
+  Project styles for Quarto HTML output
+  - Applied via AI_Template/notebooks/config/_quarto.yml -> format.html.css
+  - Keeps notebook cells clean by avoiding repeated <style> blocks
+*/
+
+:root {
+  --primary: #2563eb;
+  --accent: #673ab7;
+  --card-border: #e5e7eb;
+  --muted: #6b7280;
+  --text: #111827;
+  --code-bg: #f6f8fa;
+}
+
+/* Page base */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f8fafc;
+}
+
+main.content {
+  padding-top: 1rem;
+}
+
+/* Headings */
+h1, h2, h3 {
+  color: var(--text);
+  font-weight: 700;
+}
+
+h1 { letter-spacing: -0.01em; }
+h2 { letter-spacing: -0.005em; }
+
+/* Make Markdown headings look like previous section cards */
+main.content h2 {
+  background: #fff;
+  border: 1px solid var(--card-border);
+  border-left: 8px solid var(--primary);
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin: 26px -10px 14px -10px;
+  box-shadow: 0 4px 18px rgba(37,99,235,0.16);
+}
+
+main.content h3 {
+  background: linear-gradient(180deg, #f5f7fb, #fff 85%);
+  border: 1px solid #e8edf7;
+  border-left: 4px solid #93c5fd;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin: 16px -10px 10px -10px;
+}
+
+/* Title block banner (Quarto) */
+.quarto-title-block .quarto-title-banner {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  padding: 40px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  margin: 12px -20px 28px -20px;
+  width: calc(100% + 40px);
+  box-sizing: border-box;
+}
+
+.quarto-title-block .title {
+  color: #fff;
+  margin: 0 0 10px 0;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.quarto-title-block .subtitle {
+  color: rgba(255,255,255,0.95);
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.quarto-title-block .quarto-title-banner a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Links */
+a { color: #0a58ca; }
+a:hover { color: #084298; }
+
+/* Code blocks */
+pre, code {
+  font-variant-ligatures: none;
+}
+
+pre code {
+  background: var(--code-bg);
+  border-radius: 8px;
+  display: block;
+  padding: 0.85rem 1rem;
+  line-height: 1.45;
+  white-space: pre-wrap; /* allow wrapping for long lines */
+}
+
+/* Inline code */
+code:not(pre code) {
+  background: rgba(27,31,35,0.06);
+  border-radius: 4px;
+  padding: 0.15em 0.35em;
+}
+
+/* Callouts */
+.callout { border-radius: 10px; }
+
+/* Details / summary blocks */
+details { border-radius: 10px; }
+details > summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Tables */
+table { border-radius: 8px; overflow: hidden; }
+table thead th {
+  background: #f3f4f6;
+}
+
+/* Images */
+img { max-width: 100%; height: auto; border-radius: 8px; }
+
+/* Nice section card utility (used by notebook content) */
+.section-card {
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-left: 8px solid var(--primary);
+  padding: 24px 28px;
+  border-radius: 12px;
+  margin: 26px -10px 14px -10px;
+  box-shadow: 0 4px 18px rgba(37,99,235,0.16);
+}
+
+.section-card h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.55rem;
+  font-weight: 650;
+  color: var(--text);
+}
+
+.section-card .subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Subsection card utility */
+.subsection-card {
+  background: linear-gradient(180deg, #f5f7fb, #fff 85%);
+  border: 1px solid #e8edf7;
+  border-left: 4px solid #93c5fd;
+  padding: 18px 22px;
+  border-radius: 10px;
+  margin: 16px -10px 10px -10px;
+  width: calc(100% + 20px);
+  box-sizing: border-box;
+}
+
+.subsection-card h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.2rem;
+  font-weight: 560;
+  color: #1f2937;
+}
+
+.subsection-card .subtitle {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.98rem;
+  line-height: 1.4;
+}
+
+/* Title banner utility (used by notebook content) */
+.title-banner {
+  background: linear-gradient(135deg, #1a73e8, #673ab7);
+  color: white;
+  padding: 40px 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  margin: 12px -20px 28px -20px;
+  width: calc(100% + 40px);
+  box-sizing: border-box;
+}
+
+.title-banner h1 {
+  margin: 0 0 16px 0;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.title-banner .subtitle {
+  margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.95;
+  line-height: 1.4;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Quarto sidebar TOC tweaks */
+.sidebar nav[role="doc-toc"] {
+  font-size: 0.95rem;
+}
+
+/* When using Quarto's title block banner, hide the in-notebook H1/subtitle in HTML */
+main.content h1:first-of-type,
+main.content h1:first-of-type + p.banner-subtitle,
+main.content p.banner-subtitle {
+  display: none;
+}
+
+/* Position global code tools on the banner (best-effort) */
+.code-tools, .quarto-code-tools {
+  position: absolute;
+  top: 22px;
+  right: 20px;
+  z-index: 1001;
+}
+.code-tools a, .code-tools button,
+.quarto-code-tools a, .quarto-code-tools button {
+  color: #fff !important;
+}
+
+/* On small screens, no margin sidebar; reset widths */
+@media (max-width: 991px) {
+  .code-tools, .quarto-code-tools { right: 20px; }
+}
+
