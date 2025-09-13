@@ -6,7 +6,7 @@ dependencies = [
     "pandas>=2.0",
     "numpy>=1.26",
     "scikit-learn>=1.3",
-    "pyyaml>=6.0",
+    "pyyaml>=6.0.2",
     "matplotlib>=3.7",
     "ipython>=8.0",
     "ipykernel",
@@ -16,6 +16,7 @@ dependencies = [
     "ruff",
     "black",
     "pytest",
+    "azure-storage-blob>=12.23.1",
 ]
 
 [build-system]

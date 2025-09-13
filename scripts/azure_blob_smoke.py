@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+from __future__ import annotations
+
+import os
+import sys
+from uuid import uuid4
+
+# Allow running without installed package by adding src/ to path
+try:
+    from earnings_sentiment.storage import get_container_client
+except ModuleNotFoundError:
+    from pathlib import Path
+    REPO_ROOT = Path(__file__).resolve().parents[1]
+    SRC = REPO_ROOT / "src"
+    if SRC.exists():
+        sys.path.insert(0, str(SRC))
+    from earnings_sentiment.storage import get_container_client
+
+
+def main() -> int:
+    endpoint = os.environ.get("AZURE_BLOB_ENDPOINT") or (
+        f"https://{os.environ.get('AZURE_STORAGE_ACCOUNT','')} .blob.core.windows.net".replace(" ", "")
+    )
+    container = os.environ.get("AZURE_BLOB_CONTAINER")
+    if not container:
+        print("AZURE_BLOB_CONTAINER not set", file=sys.stderr)
+        return 2
+    print(f"Endpoint:  {endpoint}")
+    print(f"Container: {container}")
+
+    cc = get_container_client(container)
+    # Ensure container exists
+    try:
+        cc.create_container()
+        print("Created container")
+    except Exception:
+        pass
+
+    blob = f"_smoke/{uuid4().hex}.txt"
+    body = b"hello azure blob"
+    cc.upload_blob(name=blob, data=body, overwrite=True)
+    data = cc.download_blob(blob).readall()
+    assert data == body, "content mismatch"
+    cc.delete_blob(blob)
+    print("SUCCESS: Azure Blob connectivity verified.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+
