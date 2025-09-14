@@ -31,6 +31,31 @@ Figure~\ref{fig:metrics} shows current metrics.
 \end{figure}
 
 
+\subsection{Daily Ticker Sentiment (Sanity Check)}
+We aggregate headline--level FinBERT scores to per\-ticker, per\-day sentiment and observe meaningful variation outside of earnings dates. In our 2022--2024 sample, we obtain 39 ticker\-days across 7 tickers (42 headlines total). The composite sentiment (pos\,\textminus\,neg) shows broad dispersion (overall mean $-0.10$, std $0.65$, interquartile range $[-0.74,\,0.26]$), indicating the signal is not flat and can serve as a foundation for features.
+
+\begin{table}[h]
+\centering
+\caption{Per\-ticker daily sentiment coverage and variability. $\mathrm{comp\_mean}$ is the per\-day composite (pos\,\textminus\,neg).}
+\begin{tabular}{lrrrr}
+\hline
+Ticker & Days & Mean($\mathrm{comp\_mean}$) & Std($\mathrm{comp\_mean}$) & Headlines/Day \\
+\hline
+META & 25 & $-0.150$ & $0.621$ & 1.12 \\
+TSLA & 5 & $-0.151$ & $0.844$ & 1.00 \\
+NVDA & 2 & $0.067$ & $1.116$ & 1.00 \\
+MSFT & 2 & $0.558$ & $0.489$ & 1.00 \\
+JPM & 2 & $-0.714$ & $0.346$ & 1.00 \\
+AAPL & 2 & $0.431$ & $0.309$ & 1.00 \\
+AMZN & 1 & $0.003$ & --- & 1.00 \\
+\hline
+\end{tabular}
+\label{tab:daily-ticker-sentiment}
+\end{table}
+
+These diagnostics suggest sufficient day\-to\-day variation to justify building both general (market\-wide) and ticker\-specific sentiment features for use around earnings events.
+
+
 \section{Conclusion}
 Summarize findings and next steps.
 

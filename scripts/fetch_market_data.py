@@ -24,7 +24,10 @@ DEFAULT_END = "2024-12-31"
 def fetch_prices(tickers: list[str], start: str, end: str) -> pd.DataFrame:
     frames = []
     for t in tickers:
-        df = yf.download(t, start=start, end=end, auto_adjust=False, progress=False)
+        df = yf.download(t, start=start, end=end, auto_adjust=False, progress=False, group_by='column')
+        # Flatten potential MultiIndex columns to first level (open/high/low/close/volume)
+        if isinstance(df.columns, pd.MultiIndex):
+            df.columns = df.columns.get_level_values(0)
         df = df.reset_index().rename(columns=str.lower)
         if df.empty:
             continue

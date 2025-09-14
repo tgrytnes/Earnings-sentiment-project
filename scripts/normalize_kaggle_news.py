@@ -55,9 +55,11 @@ def pick_datetime_column(df: pd.DataFrame) -> str | None:
 
 
 def first_present(df: pd.DataFrame, names: Iterable[str]) -> str | None:
+    colmap = {str(c).lower(): c for c in df.columns}
     for n in names:
-        if n in df.columns:
-            return n
+        c = colmap.get(str(n).lower())
+        if c is not None:
+            return c
     return None
 
 
@@ -123,7 +125,10 @@ def normalize_single_df(df: pd.DataFrame, tickers: list[str], start: pd.Timestam
                 out_rows.append(r)
 
     if not out_rows:
-        return pd.DataFrame(columns=["ticker", "published_utc", "source", "title", "link", "body"])  # type: ignore
+        # Keep headlines even if no ticker is detected; useful for market-wide sentiment.
+        df_n2 = df_n.copy()
+        df_n2["ticker"] = ""
+        out_rows.append(df_n2)
     out = pd.concat(out_rows, ignore_index=True)
     # Reorder columns
     cols = ["ticker", "published_utc", "source", "title", "link", "body"]
