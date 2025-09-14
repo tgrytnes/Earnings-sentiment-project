@@ -7,14 +7,14 @@ from uuid import uuid4
 
 # Allow running without installed package by adding src/ to path
 try:
-    from earnings_sentiment.storage import get_container_client
+    from yourproj.storage import get_container_client
 except ModuleNotFoundError:
     from pathlib import Path
     REPO_ROOT = Path(__file__).resolve().parents[1]
     SRC = REPO_ROOT / "src"
     if SRC.exists():
         sys.path.insert(0, str(SRC))
-    from earnings_sentiment.storage import get_container_client
+    from yourproj.storage import get_container_client
 
 
 def main() -> int:

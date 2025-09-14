@@ -8,10 +8,12 @@ def align_events(prices: pd.DataFrame, earnings: pd.DataFrame) -> pd.DataFrame:
     if earnings.empty or prices.empty:
         return pd.DataFrame()
     p = prices.copy()
-    p['date'] = pd.to_datetime(p['date']).dt.tz_localize(None)
+    # Normalize to naive timestamps in local time by converting via UTC
+    p['date'] = pd.to_datetime(p['date'], utc=True).dt.tz_convert(None)
 
     e = earnings.copy()
-    e['announce_datetime'] = pd.to_datetime(e['announce_datetime']).dt.tz_localize(None)
+    # Handle both tz-aware and naive datetimes robustly
+    e['announce_datetime'] = pd.to_datetime(e['announce_datetime'], utc=True).dt.tz_convert(None)
     e['t0_date'] = e.apply(
         lambda r: r['announce_datetime'].date() if r['bmo_amc']=='BMO' else (r['announce_datetime'] + pd.Timedelta(days=1)).date(),
         axis=1
